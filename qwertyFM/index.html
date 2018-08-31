@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="nexus/NexusUI.js"></script>
+    <script src="p5/p5.js"></script>
+    <script src="p5/addons/p5.sound.js"></script>
+    <script src="p5/addons/p5.dom.js"></script>
+    
+    <script src="js/main.js"></script>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/webpd-latest.js"></script>
+    <script>
+        var patch
+        $.get('FM.pd', function(patchStr) {
+          patch = Pd.loadPatch(patchStr)
+          Pd.start()
+        })
+    </script>
+    
+    <title>Document</title>
+</head>
+<body>
+    <h1>QWERTY keyboard</h1>
+    <h2>you can play the notes in the keyboard with reference in the image below</h2>
+    <img src="keyboard.png">
+    <h2>with this slider you can control de volume</h2>
+    <div id="dial"></div>
+    <h2>you can control the envelope of the oscilator (attack, delay, sustain, release) with this multislider</h2>
+    <div id="dial2"></div>
+    <div id="target"></div>
+    <script>
+    
+
+   
+
+    
+    var slider = new Nexus.Slider('#dial',{
+    'size': [20,120],
+    'mode': 'relative',  // 'relative' or 'absolute'
+    'min': 0,
+    'max': 1,
+    'step': 0,
+    'value': 0
+    })
+    slider.on('change',function(v) {
+    console.log(v);
+    volumeChange(v);
+    })
+    var multislider = new Nexus.Multislider('#target',{
+    'size': [200,100],
+    'numberOfSliders': 4,
+    'min': 0,
+    'max': 1,
+    'step': 0,
+    'values': [0.7,0.7,0.7,0.7]
+    })
+    multislider.on('change',function(v) {
+    console.log(v.index);
+    susChange(v);
+    })      
+    </script>
+</body>
+</html>
