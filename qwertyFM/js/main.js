@@ -1,23 +1,21 @@
 //this is a test
 var osc, env, value=0, val=false ,system;
-var attackTime = 0.001;
-var decayTime = 0.2;
-var susPercent = 0.2;
-var releaseTime = 0.5;
+
 
 
 
 function setup() {
     createCanvas(640,480);
+    background(0);
     
 }
 
 function draw() {
-  console.log(Pd);
-  console.log(mouseX);
+//  console.log(Pd);
+  //console.log(mouseX);
  
-  Pd.send('modAmp',[mouseX]);
-  Pd.send('carr',[mouseY]);
+  Pd.send('modFreq',[mouseX]);
+  Pd.send('modeAmp',[mouseY]);
 }
 
 function keyPressed(){
