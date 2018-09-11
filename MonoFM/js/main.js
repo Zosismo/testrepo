@@ -17,12 +17,12 @@ function draw() {
 
 function ampChange(value){
   console.log("value "+value)
-  Pd.send('fr', [value]);
+  Pd.send('amp', [value]);
 }
 function freqChange(value){
-  Pd.send('am', [value]);
+  Pd.send('fr', [value]);
 }
-function carChange(value){
-  Pd.send('CARR', [value]);
+function carrChange(value){
+  Pd.send('carr', [midiToFreq(value.note)]);
 }
 
